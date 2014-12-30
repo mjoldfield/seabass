@@ -71,7 +71,7 @@ static void __exit seabass_exit(void)
 #endif
 }
 
-arch_initcall(seabass_init);
+module_init(seabass_init);
 module_exit(seabass_exit);
 
 MODULE_DESCRIPTION("Seabass LED driver");
