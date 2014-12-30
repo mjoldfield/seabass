@@ -1,4 +1,10 @@
-/* ex http://lists.cairographics.org/archives/cairo/2010-July/020378.html */
+/*
+ * framebuffer test code copied from a posting by
+ * Andrea Rossignoli to the Cairo mailing list:
+ * http://lists.cairographics.org/archives/cairo/2010-July/020378.html
+ *
+ * I have no idea about the license for this.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>

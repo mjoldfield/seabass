@@ -74,6 +74,6 @@ static void __exit seabass_exit(void)
 arch_initcall(seabass_init);
 module_exit(seabass_exit);
 
-MODULE_DESCRIPTION("Seabass driver");
+MODULE_DESCRIPTION("Seabass LED driver");
 MODULE_AUTHOR("Martin Oldfield");
 MODULE_LICENSE("GPL");
