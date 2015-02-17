@@ -1,0 +1,1 @@
+Reading netlist file "/Users/mjo/Projects/MinnowBoardMax/Hardware/LCD PCB/Main.net".

@@ -1,0 +1,9 @@
+(export (version D)
+  (design
+    (source "/Users/mjo/Projects/MinnowBoardMax/Hardware/LCD PCB/Main.sch")
+    (date "Sunday, 04 January 2015 07:41:41")
+    (tool "Eeschema (2014-12-14 BZR 5322)-product"))
+  (components)
+  (libparts)
+  (libraries)
+  (nets))
