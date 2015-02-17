@@ -29,19 +29,19 @@ static struct gpio_led seabass_led[] = {
     .name = "seabass:red:user",
     .default_trigger = "heartbeat",
     .gpio = 472,
-    .active_low = 0,
+    .active_low = 1,
   },
   {
     .name = "seabass:yellow:user",
     .default_trigger = "none",
     .gpio = 473,
-    .active_low = 0,
+    .active_low = 1,
   },
   {
     .name = "seabass:green:user",
     .default_trigger = "none",
     .gpio = 475,
-    .active_low = 0,
+    .active_low = 1,
   },
 };
  

@@ -14,6 +14,7 @@
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <cairo.h>
+#include <time.h>
 
 typedef struct _cairo_linuxfb_device {
   int fb_fd;
@@ -68,7 +69,7 @@ cairo_surface_t *cairo_linuxfb_surface_create(const char *fb_name)
   device->fb_data = (char *)mmap(0, device->fb_screensize,
 				 PROT_READ | PROT_WRITE, MAP_SHARED,
 				 device->fb_fd, 0);
-  if ((int)device->fb_data == -1) {
+  if (device->fb_data == (char *)-1) {
     perror("Error: failed to map framebuffer device to memory");
     exit(4);
   }
@@ -98,19 +99,30 @@ int main (int argc, char *argv[])
 
   surface = cairo_linuxfb_surface_create(NULL);
   cr = cairo_create(surface);
+
+  cairo_select_font_face(cr, "sans"
+			 , CAIRO_FONT_SLANT_NORMAL
+			 , CAIRO_FONT_WEIGHT_BOLD);
+
+  cairo_set_font_size(cr, 100.0);
   
-  cairo_paint(cr);
+  while(1)
+    {
+      char time_buff[8];
+      const time_t t = time(NULL);
+      struct tm *tm = localtime(&t);
+      
+      snprintf(time_buff, 8, "%02d:%02d", tm->tm_hour, tm->tm_min);
 
-  cairo_select_font_face(cr, "serif", CAIRO_FONT_SLANT_NORMAL,
-			 CAIRO_FONT_WEIGHT_BOLD);
-  cairo_set_font_size(cr, 80.0);
-  cairo_set_source_rgb(cr, 1.0, 0.0, 1.0);
-  cairo_move_to(cr, 00.0, 100.0);
-  cairo_show_text(cr, "Hello");
+      cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
+      cairo_paint(cr);
 
-  cairo_set_source_rgb(cr, 0.0, 1.0, 0.0);
-  cairo_move_to(cr, 00.0, 180.0);
-  cairo_show_text(cr, "World!");
+      cairo_move_to(cr, 00.0, 150.0);
+      cairo_set_source_rgb(cr, 1.0, 0.0, 0.0);
+      cairo_show_text(cr, time_buff);
+
+      sleep(60);
+    }
 
   cairo_destroy(cr);
   cairo_surface_destroy(surface);

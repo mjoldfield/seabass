@@ -1,0 +1,3 @@
+#! /bin/sh
+
+gcc  -O3 fb.c `pkg-config --cflags --libs cairo` -o fb
