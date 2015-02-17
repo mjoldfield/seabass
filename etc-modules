@@ -1,0 +1,17 @@
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file contains the names of kernel modules that should be loaded
+# at boot time, one per line. Lines beginning with "#" are ignored.
+# Parameters can be specified after the module name.
+
+lp
+rtc
+ledtrig_heartbeat
+ledtrig_oneshot
+ledtrig_gpio
+leds_gpio
+leds_pwm
+seabass_leds
+fbtft_device name=adafruit22a speed=15000000   gpios=reset:339,dc:338,led:340 dma=0 rotate=270
+
+
